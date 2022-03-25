@@ -1,15 +1,31 @@
 # probando nuestro servidor
-GET http://localhost:8080/api/v1/home
+GET http://localhost:5000/api/v1/home
 
 ###
-GET http://localhost:8080/api/v1/note/
+GET http://localhost:5000/api/v1/note/
+
+### obtener una sola nota
+GET http://localhost:5000/api/v1/note/4
 
 ###
-POST http://localhost:8080/api/v1/note
+POST http://localhost:5000/api/v1/note
 Content-Type: application/json
 
 { 
-    "title":"second note",
-    "content": "this is my second note",
+    "content": "this is my test note",
     "status": true
 }
+
+###
+PUT http://localhost:5000/api/v1/note
+Content-Type: application/json
+
+{ 
+    "_id":6,
+    "_title":"actulizando",
+    "_content": "this is my test note",
+    "_status": true
+}
+
+###
+DELETE  http://localhost:5000/api/v1/note/5

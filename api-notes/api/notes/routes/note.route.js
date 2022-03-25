@@ -76,9 +76,7 @@ routerNote.get("/",noteController.getAllNotes)
  *      404:
  *        description: note not found                 
  */
-routerNote.get("/:id",(req,res)=>{
-    res.json({message:"I am route Get one note"})
-})
+routerNote.get("/:id",noteController.getOneNote)
 
 /**
  * @swagger
@@ -133,9 +131,7 @@ routerNote.post("/",noteController.createNewNote);
  *      404:
  *        description: user not found                 
  */
-routerNote.put("/:id",(req,res)=>{
-    res.json({message:"I am route create New note"})
-})
+routerNote.put("/",noteController.updateNote)
 
 /**
  * @swagger
@@ -162,8 +158,6 @@ routerNote.put("/:id",(req,res)=>{
  *      404:
  *        description: note not found and not deleted                
  */
-routerNote.delete("/:id",(req,res)=>{
-    res.json({message:"I am route create New note"})
-})
+routerNote.delete("/:id",noteController.deleteNote)
 
 export default routerNote;
