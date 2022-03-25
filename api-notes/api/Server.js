@@ -1,6 +1,28 @@
 import express from "express";
+//swagger
+import swaggerUI from "swagger-ui-express";
+import swaggerJsDoc from "swagger-jsdoc";
+
 
 import router from "./notes/routes/note.route.js";
+
+//object swagger
+const swaggerSpec={
+  definition:{
+    openapi: "3.0.0",
+    info:{
+      title:"api-notes",
+      version:"1.0.0"
+    },
+    server:[
+      {
+        url:"http://localhost:8080"
+      }
+    ]
+  },
+  apis:[`api/notes/routes/*.js`],
+}
+
 
 export class Server{
   constructor(hostName,port,nameApp){
@@ -20,6 +42,7 @@ export class Server{
 
   
   initRoutes(){
+      this._api.use("/api-doc",swaggerUI.serve,swaggerUI.setup(swaggerJsDoc(swaggerSpec)))
       this._api.use("/api/v1/note",router);
 
       this._api.use("/api/v1/home",(req,res)=>{
